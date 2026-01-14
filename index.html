@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Pages Site</title>
+  <title>Big Casino</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>The casino is all out of money</h1>
-    <img
-      src="https://m.media-amazon.com/images/I/51u1VE5CdWL.jpg"
-      alt="pot of greed"
-    />
-    <img
-      src="https://cdn11.bigcommerce.com/s-spem6oukby/images/stencil/1280x1280/products/123/444/3C__99122__01407.1681313264.jpg?c=1"
-      alt="3"
-    />
-    <img
-      src="https://andrewthamcc.github.io/blackjack2.0/assets/facedown.png"
-      alt="king"
-    />
-  </main>
+  <h1>Random Number Generator</h1>
+
+    <p id="output">Click the button</p>
+
+    <button onclick="generate()">Generate</button>
+
+    <script>
+      function generate() {
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        document.getElementById("output").textContent = randomNumber;
+      }
+    </script>
 </body>
 </html>
