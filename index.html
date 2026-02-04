@@ -2,21 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Big Casino</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Big Gaming Hats</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Random Number Generator</h1>
-
-    <p id="output">Click the button</p>
-
-    <button onclick="generate()">Generate</button>
-
-    <script>
-      function generate() {
-        const randomNumber = Math.floor(Math.random() * 100) + 1;
-        document.getElementById("output").textContent = randomNumber;
-      }
-    </script>
+  <h1>Big Gaming Hat Wiki</h1>
+    <div class="image-grid">
+      <div class="image-card">
+        <img src="image1.jpg" alt="Captain Hat">
+        <div class="overlay">
+          <h3>Captain Hat</h3>
+          <p>Dropped from ghasts</p>
+          <p>Base armor: iron</p>
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="image2.jpg" alt="Miner Hat">
+        <div class="overlay">
+          <h3>Miner Hat</h3>
+          <p>Dropped from zombies</p>
+          <p>Base armor: iron</p>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
