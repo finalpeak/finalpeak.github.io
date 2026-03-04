@@ -1,0 +1,137 @@
+:root {
+  --page-max: 1100px;
+  --column-w: 720px;
+  --accent: #ffffff; /* column color */
+  --overlay: rgba(0,0,0,0.05); /* optional dim over background */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: var(--overlay);
+  pointer-events:none;
+}
+
+.page {
+  width:100%;
+  max-width:var(--page-max);
+  margin:0 auto;
+  padding:48px 20px;
+  display:flex;
+  justify-content:center; /* center the column horizontally */
+  align-items:flex-start; /* or center if you want vertical center */
+  min-height:100vh;
+}
+
+/* the solid column */
+.center-column{
+  width:100%;
+  max-width:var(--column-w);
+  background: var(--accent);
+  border-radius:12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  padding:32px;
+  color:#111;
+}
+
+.home-button {
+  position: fixed;      /* stays in place even when scrolling */
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+
+  background: white;
+  color: black;
+  text-decoration: none;
+
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 20px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.home-button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.home-button:hover {
+  background: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+p {
+  margin: 0.25rem 0;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.image-card img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.image-card:hover .overlay {
+  opacity: 1;
+}

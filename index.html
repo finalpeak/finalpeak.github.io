@@ -3,30 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Big Gaming Hats</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Big Gaming Minecraft</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
   <div class="page">
-    <h1>Big Gaming Hat Wiki</h1>
-      <div class="image-grid">
-        <div class="image-card">
-          <img src="images/captain_splash.png" alt="Captain Hat">
-          <div class="overlay">
-            <h3>Captain Hat</h3>
-            <p>Dropped from ghasts</p>
-            <p>Base armor: iron</p>
-          </div>
-        </div>
-        <div class="image-card">
-          <img src="images/miner_splash.png" alt="Miner Hat">
-          <div class="overlay">
-            <h3>Miner Hat</h3>
-            <p>Dropped from zombies</p>
-            <p>Base armor: iron</p>
-          </div>
-        </div>
+    <main class="center-column" role="main">
+      <h1>Where the Gaming is Big.</h1> 
+      <h3>98.25.53.201:26676</h3>
+      
+      <div id="mc-status">
+        <strong>Players Online:</strong> <span id="mc-count">Loading...</span>
+        <ul id="mc-players"></ul>
       </div>
-    </div>
+
+      <script>
+      async function loadMCStatus() {
+        try {
+          const response = await fetch(
+            "https://api.mcsrvstat.us/2/98.25.53.201:26676"
+          );
+          const data = await response.json();
+
+          const countEl = document.getElementById("mc-count");
+          const listEl = document.getElementById("mc-players");
+
+          if (!data.online) {
+            countEl.textContent = "Server Offline";
+            return;
+          }
+
+          const online = data.players?.online ?? 0;
+          const names = data.players?.list ?? [];
+
+          countEl.textContent = online;
+
+          listEl.innerHTML = names.length
+            ? names.map(name => `<li>${name}</li>`).join("")
+            : "<li>No players online</li>";
+
+        } catch (err) {
+          document.getElementById("mc-count").textContent = "Error";
+          console.error(err);
+        }
+      }
+
+      loadMCStatus();
+      setInterval(loadMCStatus, 30000); // refresh every 30 seconds
+      </script>
+
+        <a href="https://shirecraft.us/dynmap/#" class="image-button">
+          <img src="images/dynmap.png" alt="View the live server map (Dynmap)">
+          <span class="overlay">
+            <h3>Dynmap</h3>
+            <p>View a live map of the server.</p>
+          </span>
+        </a>
+        <a href="hats.html" class="image-button">
+          <img src="images/hat_wiki.png" alt="View the list of hats obtainable in-game">
+          <span class="overlay">
+            <h3>Hat Wiki</h3>
+            <p>View the list of hats obtainable in-game.</p>
+          </span>
+        </a>
+      </div>
+    </main>
 </body>
 </html>
